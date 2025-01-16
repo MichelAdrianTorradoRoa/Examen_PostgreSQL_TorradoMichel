@@ -1,0 +1,100 @@
+-- El  nombre de la base de datos es (4H) Concesionario de vehículos.
+
+create type estado_ENUM as enum ('nuevo', 'usado');
+
+create table inventario_vehiculos(
+Id SERIAL primary key,
+Marca VARCHAR(50) not null,
+Modelo VARCHAR(50) not null,
+Year DATE not null,
+Precio numeric not null,
+Estado estado_ENUM not null
+);
+
+create table empleados(
+Id SERIAL primary KEY,
+Nombre VARCHAR(50) not null,
+Apellido VARCHAR(50) not null,
+Rol VARCHAR(50) not null,
+Fecha_Contratacion DATE not NULL
+);
+
+create table proveedores(
+Id SERIAL primary KEY,
+Nombre Varchar(50) not null,
+Empresa Varchar(50) not null,
+Pieza Varchar(50) not null,
+);
+
+create table clientes_servicios(
+Id SERIAL primary KEY,
+Nombre VARCHAR(50) not null,
+Apellido VARCHAR(50) not null,
+Marca VARCHAR(50) not null,
+Modelo VARCHAR(50) not null,
+Year DATE not null
+);
+
+create table clientes_potenciales(
+Id SERIAL primary KEY,
+Nombre Varchar(50) not null,
+Apellido VARCHAR(50) not null,
+Telefono Varchar(30) not null,
+Email VARCHAR(50) not null,
+Id_InventarioVehiculo INT not null,
+foreign key(Id_InventarioVehiculo) references inventario_vehiculos(Id)
+);
+
+create table clientes_ventas(
+Id SERIAL primary KEY,
+Nombre Varchar(50) not null,
+Apellido VARCHAR(50) not null,
+Telefono Varchar(30) not null,
+Email VARCHAR(50) not null,
+Fecha_Nacimiento DATE not null,
+Fecha_Venta DATE not null,
+Id_InventarioVehiculo INT not null,
+foreign key(Id_InventarioVehiculo) references inventario_vehiculos(Id)
+);
+
+
+create table departamento_ventas(
+Id SERIAL primary KEY,
+Comision_Generada numeric not null,
+Id_ClienteVenta INT not null,
+Id_Empleado INT not null,
+foreign key(Id_ClienteVenta) references clientes_ventas(Id),
+foreign key(Id_Empleado) references empleados(Id)
+);
+
+create table historial_servicios(
+Id SERIAL primary KEY,
+Servicio VARCHAR(50) not null,
+Fecha_Servicio DATE not null ,
+Id_ClienteServicio INT not null,
+Id_Empleado INT not null,
+Id_Proveedor INT not null,
+foreign key(Id_ClienteServicio) references clientes_servicios(Id),
+foreign key(Id_Empleado) references empleados(Id),
+foreign key(Id_Proveedor) references proveedores(Id)
+); 
+
+create table departamento_servicios(
+Id SERIAL primary KEY,
+Servicio VARCHAR(50) not null,
+Hora_Inicio TIME not null,
+Hora_Final TIME not null,
+Id_Empleado INT not null,
+foreign key(Id_Empleado) references empleados(Id)
+);
+
+
+
+
+
+
+
+
+
+
+

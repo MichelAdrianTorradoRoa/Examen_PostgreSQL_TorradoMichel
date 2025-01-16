@@ -1,0 +1,57 @@
+insert into inventario_vehiculos(Marca, Modelo, Year, Precio, Estado) values
+('Hyundai', 'XYZ', '2024-05-26', 15000000.00,'nuevo'),
+('Mazda', 'ASF25', '2020-07-15', 20000000.00,'usado'),
+('Toyota', '456', '2025-01-10', 30000000.00,'nuevo'),
+('Chevrolet', 'KIU26', '2010-04-03', 10000000.00,'usado'),
+('Lamborgini', 'QWE852', '2024-12-31', 50000000.00,'usado'),
+('Ferrari', 'WSDE4521', '2022-08-13', 30000000.00,'nuevo'),
+('Audi', 'KMNJ', '2022-10-25', 9200000.00,'nuevo'),
+('Hyundai', '7896', '2008-09-12', 75000000.00,'usado'),
+('Toyota', '4123', '2023-07-20', 30000000.00,'nuevo'),
+('Lamborgini', '753', '2004-06-06', 18000000.00,'usado');
+
+insert into empleados(Nombre, Apellido, Rol, Fecha_Contratacion) values
+('Juan','Suarez','Marketing','2025-01-10'),
+('Juan', 'London', 'Supervisor','2010-05-29'),
+('Camila', 'Zapata', 'Asesora de Ventas', '2020-08-30'),
+('Jose', 'Rodriguez', 'Mecanico','2015-03-14'),
+('Martha','Mora','Lider Ventas','2018-09-13'),
+('Joan','Mendez','Relaciones Publicas','2008-03-18'),
+('Laura','Sandoval','Gerente','2019-10-25');
+
+insert into proveedores (Nombre, Empresa, Pieza) values
+('Roberto Martinez', 'Repuestos MAR', 'Valvula'),
+('Camilo Rueda', 'CasaAutomotriz', 'Dispensadores'),
+('Carlos Hernandez', 'FlashCar', 'Pistones');
+
+insert into clientes_servicios(Nombre, Apellido, Marca, Modelo, Year) values
+('Juan', 'Ruiz', 'Hyundai', 'XYZ','2020-07-15'),
+('Karen', 'Villanueva','Toyota','KIU26', '2008-09-12'),
+('Kevin','Rodriguez','Chevrolet','WSDE4521','2004-06-06');
+
+insert into clientes_potenciales (Nombre, Apellido, telefono , email, id_inventariovehiculo) values
+('Juan', 'Ruiz', '3163730475', 'juanruiz@hotmail.com',5),
+('Karen', 'Villanueva','3133338631','karenvillanueva@gmail.com', 7),
+('Kevin','Rodriguez','3042445682','kv@yahoo.es',3);
+
+insert into clientes_ventas (Nombre, Apellido, telefono , email, Fecha_Nacimiento, Fecha_Venta,Id_InventarioVehiculo) values
+('Juan', 'Ruiz', '3163730475', 'juanruiz@hotmail.com','2004-06-06','2023-07-20',5),
+('Karen', 'Villanueva','3133338631','karenvillanueva@gmail.com','1994-05-03','2019-10-25', 7),
+('Kevin','Rodriguez','3042445682','kv@yahoo.es','1996-12-16','2025-01-10',3);
+
+insert into departamento_ventas (comision_generada,id_clienteventa,id_empleado) values
+(15, 1,3),
+(30,2,5),
+(15,3,3);
+
+insert into historial_servicios (servicio,fecha_servicio,id_clienteservicio,id_empleado,id_proveedor) values
+('Mantenimiento', '2024-08-13',1,4,1),
+('Reparacion', '2025-01-13',2,2,2),
+('Mantenimiento','2023-09-30',3,4,3);
+
+insert into departamento_servicios (servicio,hora_inicio,hora_final,id_empleado) values
+('Asesoramiento Imagen', '08:00:00', '18:00:00',6),
+('Publicidad', '08:30:00', '18:30:00',1),
+('Gestonia Respuestos', '09:00:00', '17:00:00',7);
+
+
